@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ides list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ide in ides %}
+            <tr>
+                <td><a href="{{ path('ide_show', { 'id': ide.id }) }}">{{ ide.id }}</a></td>
+                <td>{{ ide.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('ide_show', { 'id': ide.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('ide_edit', { 'id': ide.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ide_new') }}">Create a new ide</a>
+        </li>
+    </ul>
+{% endblock %}

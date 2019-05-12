@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Frameworks list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Version</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for framework in frameworks %}
+            <tr>
+                <td><a href="{{ path('framework_show', { 'id': framework.id }) }}">{{ framework.id }}</a></td>
+                <td>{{ framework.name }}</td>
+                <td>{{ framework.version }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('framework_show', { 'id': framework.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('framework_edit', { 'id': framework.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('framework_new') }}">Create a new framework</a>
+        </li>
+    </ul>
+{% endblock %}
